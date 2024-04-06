@@ -18,6 +18,13 @@ class Users extends Component {
     this.setState((curState=> {return {showUsers: !curState.showUsers}}))
     console.log('Fired')
   };
+
+  componentDidUpdate(){
+    if(this.props.users.length === 0){
+      throw new Error('Custom Error: No users searched')
+    }
+  }
+
   render() {
     const usersList = (
       <ul>
