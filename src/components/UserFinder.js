@@ -6,16 +6,20 @@ import classes from "./UserFinder.module.css";
 const DUMMY_USERS = [
   { id: "u1", name: "Max" },
   { id: "u2", name: "Manuel" },
-  { id: "u3", name: "Julie" },
+  { id: "u3", name: "Julie" }
 ];
 
 class UserFinder extends Component {
   constructor() {
     super();
-    this.state = { filteredUsers: DUMMY_USERS, searchTerm: "" };
+    this.state = { filteredUsers: [], searchTerm: "" };
   }
+  
   searchChangeHandler(event) {
     this.setState({ searchTerm: event.target.value });
+  }
+  componentDidMount(){
+    this.setState({filteredUsers:DUMMY_USERS})
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.searchTerm !== this.state.searchTerm) {
